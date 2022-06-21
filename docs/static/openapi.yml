@@ -29501,6 +29501,44 @@ paths:
           format: uint64
       tags:
         - Query
+  /pvhee/checkers/checkers/next_game:
+    get:
+      summary: Queries a NextGame by index.
+      operationId: PvheeCheckersCheckersNextGame
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            type: object
+            properties:
+              NextGame:
+                type: object
+                properties:
+                  creator:
+                    type: string
+                  idValue:
+                    type: string
+                    format: uint64
+        default:
+          description: An unexpected error response.
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+              message:
+                type: string
+              details:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    '@type':
+                      type: string
+                  additionalProperties: {}
+      tags:
+        - Query
   /pvhee/checkers/checkers/params:
     get:
       summary: Parameters queries the parameters of the module.
@@ -50688,9 +50726,28 @@ definitions:
     description: >-
       QueryAppVersionResponse is the response type for the Query/AppVersion RPC
       method.
+  pvhee.checkers.checkers.NextGame:
+    type: object
+    properties:
+      creator:
+        type: string
+      idValue:
+        type: string
+        format: uint64
   pvhee.checkers.checkers.Params:
     type: object
     description: Params defines the parameters for the module.
+  pvhee.checkers.checkers.QueryGetNextGameResponse:
+    type: object
+    properties:
+      NextGame:
+        type: object
+        properties:
+          creator:
+            type: string
+          idValue:
+            type: string
+            format: uint64
   pvhee.checkers.checkers.QueryParamsResponse:
     type: object
     properties:
